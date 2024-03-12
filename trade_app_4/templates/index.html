@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trading WebPage</h1>
+    
+    <!-- Running Date and Time Display -->
+    <!-- <div id="current_time">{{ current_time }}</div>  -->
+
+        
+    <div id="datetime"></div>
+
+    <script>
+        // Function to update date and time
+        function updateDateTime() {
+            var datetimeDiv = document.getElementById('datetime');
+            datetimeDiv.innerText = new Date().toLocaleString();
+        }
+        
+        // Call updateDateTime every second
+        setInterval(updateDateTime, 1000);
+        
+        // Initial call to updateDateTime
+        updateDateTime();
+
+    </script>
+
+    
+    <!-- Big Input Box with a Title -->
+    <h2>Token</h2>
+    <textarea rows="3" cols="100"></textarea>
+    
+    <!-- Dynamic Display Window -->
+    <h2>Dynamic Display Window</h2>
+    <div id="dynamic_display"></div>
+    
+    <!-- Combo Boxes -->
+    <h2>Combo Boxes</h2>
+        <select id="combo1" name="combo1">
+            <option value="option1" {% if combo1_value == 'option1' %} selected {% endif %}>Option 1</option>
+            <option value="option2" {% if combo1_value == 'option2' %} selected {% endif %}>Option 2</option>
+            <option value="option3" {% if combo1_value == 'option3' %} selected {% endif %}>Option 3</option>
+        </select>
+        <select id="combo2" name="combo2">
+            <option value="optionA" {% if combo2_value == 'optionA' %} selected {% endif %}>Option A</option>
+            <option value="optionB" {% if combo2_value == 'optionB' %} selected {% endif %}>Option B</option>
+            <option value="optionC" {% if combo2_value == 'optionC' %} selected {% endif %}>Option C</option>
+        </select><br><br>
+        <!-- Populate options dynamically if needed -->
+    
+    
+    <!-- Buttons -->
+    <h1>Buttons</h1>
+        <div id="button_container">
+            <button name="15" value="Data for Button 1" onclick="document.getElementById('dynamic_display').value = this.value;">Button 1</button>
+            <button name="30" value="Data for Button 2" onclick="document.getElementById('dynamic_display').value = this.value;">Button 2</button>
+            <button name="60" value="Data for Button 3" onclick="document.getElementById('dynamic_display').value = this.value;">Button 3</button>
+            <button name="90" value="Data for Button 4" onclick="document.getElementById('dynamic_display').value = this.value;">Button 4</button>
+            <button name="button5" value="Data for Button 5" onclick="document.getElementById('dynamic_display').value = this.value;">Button 5</button><br>
+            <button name="button6" value="Data for Button 6" onclick="document.getElementById('dynamic_display').value = this.value;">Button 6</button>
+            <button name="button7" value="Data for Button 7" onclick="document.getElementById('dynamic_display').value = this.value;">Button 7</button>
+            <button name="button8" value="Data for Button 8" onclick="document.getElementById('dynamic_display').value = this.value;">Button 8</button>
+            <button name="button9" value="Data for Button 9" onclick="document.getElementById('dynamic_display').value = this.value;">Button 9</button>
+            <button name="button10" value="Data for Button 10" onclick="document.getElementById('dynamic_display').value = this.value;">Button 10</button><br>
+            <button name="button11" value="Data for Button 11" onclick="document.getElementById('dynamic_display').value = this.value;">Button 11</button>
+            <button name="button12" value="Data for Button 12" onclick="document.getElementById('dynamic_display').value = this.value;">Button 12</button>
+            <button name="button13" value="Data for Button 13" onclick="document.getElementById('dynamic_display').value = this.value;">Button 13</button>
+            <button name="button14" value="Data for Button 14" onclick="document.getElementById('dynamic_display').value = this.value;">Button 14</button>
+            <button name="button15" value="Data for Button 15" onclick="document.getElementById('dynamic_display').value = this.value;">Button 15</button><br>
+            <button name="button16" value="Data for Button 16" onclick="document.getElementById('dynamic_display').value = this.value;">Button 16</button>
+            <button name="button17" value="Data for Button 17" onclick="document.getElementById('dynamic_display').value = this.value;">Button 17</button>
+            <button name="button18" value="Data for Button 18" onclick="document.getElementById('dynamic_display').value = this.value;">Button 18</button>
+            <button name="button19" value="Data for Button 19" onclick="document.getElementById('dynamic_display').value = this.value;">Button 19</button>
+            <button name="button20" value="Data for Button 20" onclick="document.getElementById('dynamic_display').value = this.value;">Button 20</button>
+        </div><br><br>
+
+
+    <!-- Refresh Button -->
+    <button id="refresh_button">Refresh</button>
+    
+    <!-- JavaScript for handling button clicks and refreshing -->
+    <script>
+        // JavaScript code for handling button clicks and refreshing
+        
+        // Function to refresh the page
+        function refreshPage() {
+            location.reload();
+        }
+        
+        // Assigning click event listeners to buttons
+        document.getElementById("refresh_button").addEventListener("click", refreshPage);
+        
+        
+        document.getElementById("start_button").addEventListener("click", function() {
+            var inputData = document.getElementById("input_data").value;
+            // Add your logic here for handling the entered data
+        });
+
+
+
+            {% for i in range(20) %}
+            document.getElementById("button{{ i }}").addEventListener("click", function() {
+                // Add your logic here for button {{ i+1 }} click
+            });
+            {% endfor %}
+            
+    </script>
+
+
+
+</body>
+</html>

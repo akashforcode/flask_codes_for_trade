@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+</head>
+<body>
+    <h2>Token</h2>
+    <form method="post">
+        <label for="input_title">Title:</label>
+        <input type="text" id="input_title" name="input_title" value="{{ input_title }}"><br><br>
+
+        <h1>Dynamic Display Window</h1>
+        <textarea id="dynamic_display" name="dynamic_display">{{ dynamic_display }}</textarea><br><br>
+
+        <h1>Combo Boxes</h1>
+        <select id="combo1" name="combo1">
+            <option value="option1" {% if combo1_value == 'option1' %} selected {% endif %}>Option 1</option>
+            <option value="option2" {% if combo1_value == 'option2' %} selected {% endif %}>Option 2</option>
+            <option value="option3" {% if combo1_value == 'option3' %} selected {% endif %}>Option 3</option>
+        </select>
+        <select id="combo2" name="combo2">
+            <option value="optionA" {% if combo2_value == 'optionA' %} selected {% endif %}>Option A</option>
+            <option value="optionB" {% if combo2_value == 'optionB' %} selected {% endif %}>Option B</option>
+            <option value="optionC" {% if combo2_value == 'optionC' %} selected {% endif %}>Option C</option>
+        </select><br><br>
+
+        <h1>Buttons</h1>
+        <div id="button_container">
+            <button name="15" value="Data for Button 1" onclick="document.getElementById('dynamic_display').value = this.value;">Button 1</button>
+            <button name="30" value="Data for Button 2" onclick="document.getElementById('dynamic_display').value = this.value;">Button 2</button>
+            <button name="60" value="Data for Button 3" onclick="document.getElementById('dynamic_display').value = this.value;">Button 3</button>
+            <button name="90" value="Data for Button 4" onclick="document.getElementById('dynamic_display').value = this.value;">Button 4</button>
+            <button name="button5" value="Data for Button 5" onclick="document.getElementById('dynamic_display').value = this.value;">Button 5</button><br>
+            <button name="button6" value="Data for Button 6" onclick="document.getElementById('dynamic_display').value = this.value;">Button 6</button>
+            <button name="button7" value="Data for Button 7" onclick="document.getElementById('dynamic_display').value = this.value;">Button 7</button>
+            <button name="button8" value="Data for Button 8" onclick="document.getElementById('dynamic_display').value = this.value;">Button 8</button>
+            <button name="button9" value="Data for Button 9" onclick="document.getElementById('dynamic_display').value = this.value;">Button 9</button>
+            <button name="button10" value="Data for Button 10" onclick="document.getElementById('dynamic_display').value = this.value;">Button 10</button><br>
+            <button name="button11" value="Data for Button 11" onclick="document.getElementById('dynamic_display').value = this.value;">Button 11</button>
+            <button name="button12" value="Data for Button 12" onclick="document.getElementById('dynamic_display').value = this.value;">Button 12</button>
+            <button name="button13" value="Data for Button 13" onclick="document.getElementById('dynamic_display').value = this.value;">Button 13</button>
+            <button name="button14" value="Data for Button 14" onclick="document.getElementById('dynamic_display').value = this.value;">Button 14</button>
+            <button name="button15" value="Data for Button 15" onclick="document.getElementById('dynamic_display').value = this.value;">Button 15</button><br>
+            <button name="button16" value="Data for Button 16" onclick="document.getElementById('dynamic_display').value = this.value;">Button 16</button>
+            <button name="button17" value="Data for Button 17" onclick="document.getElementById('dynamic_display').value = this.value;">Button 17</button>
+            <button name="button18" value="Data for Button 18" onclick="document.getElementById('dynamic_display').value = this.value;">Button 18</button>
+            <button name="button19" value="Data for Button 19" onclick="document.getElementById('dynamic_display').value = this.value;">Button 19</button>
+            <button name="button20" value="Data for Button 20" onclick="document.getElementById('dynamic_display').value = this.value;">Button 20</button>
+        </div><br><br>
+
+        <h1>Live Date and Time Display Window</h1>
+        <div id="date_time_display">
+            {% set now = "" %}
+            {% set now = now + datetime.utcnow() %}
+            {{ now }}
+        </div><br><br>
+
+        <button type="submit" name="refresh" value="Refresh">Refresh</button>
+    </form>
+</body>
+</html>

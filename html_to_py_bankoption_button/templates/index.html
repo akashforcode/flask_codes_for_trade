@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Combobox and Buttons Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #buttonTable {
+            border-collapse: collapse;
+        }
+        #buttonTable td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select an Option</h1>
+        <form method="POST">
+            <select name="option">
+                {% for option in options %}
+                <option value="{{ option }}" {% if option == selected_option %}selected{% endif %}>{{ option }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+        {% if selected_option %}
+        <h2>You selected: {{ selected_option }}</h2>
+        {% endif %}
+
+        <table id="buttonTable">
+            <tr>
+                <td><button class="actionButton">Button 1</button></td>
+                <td><button class="actionButton">Button 2</button></td>
+            </tr>
+            <tr>
+                <td><button class="actionButton">Button 3</button></td>
+                <td><button class="actionButton">Button 4</button></td>
+            </tr>
+            <tr>
+                <td><button class="actionButton">Button 5</button></td>
+                <td><button class="actionButton">Button 6</button></td>
+            </tr>
+            <tr>
+                <td><button class="actionButton">Button 7</button></td>
+                <td><button class="actionButton">Button 8</button></td>
+            </tr>
+            <tr>
+                <td><button class="actionButton">Button 9</button></td>
+                <td><button class="actionButton">Button 10</button></td>
+            </tr>
+        </table>
+
+        <div id="result"></div>
+    </div>
+
+    
+    <script>
+        $(document).ready(function(){
+            $('.actionButton').click(function(){
+                var selectedOption = $('#optionSelect').val();
+                var action = $(this).text();
+                $.ajax({
+                    type: 'POST',
+                    url: '/process_data',
+                    data: { selected_option: selectedOption, action: action },
+                    success: function(response) {
+                        $('#result').text(response.result);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

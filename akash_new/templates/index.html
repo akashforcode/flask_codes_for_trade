@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Strike Value</title>
+</head>
+<body>
+    <h1>Update Strike Value</h1>
+    <form id="strikeForm">
+        <label for="strikevalue">Enter Strike Value:</label>
+        <input type="text" id="strikevalue" name="strikevalue">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('strikeForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the default form submission
+            var formData = new FormData(this);  // Get form data
+            var xhr = new XMLHttpRequest();  // Create new XMLHttpRequest object
+            xhr.open('POST', '/process_strikevalue', true);  // Specify the request type, URL, and asynchronous flag
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 400) {
+                    // Request was successful, update the result div with response
+                    document.getElementById('result').innerText = xhr.responseText;
+                } else {
+                    // Request failed
+                    console.error('Request failed');
+                }
+            };
+            xhr.onerror = function() {
+                // Connection error
+                console.error('Connection error');
+            };
+            xhr.send(formData);  // Send the form data
+        });
+    </script>
+
+        <!-- Display the updated value of xx -->
+        <div id="xxValue">Updated xx: <!-- Value will be dynamically updated --></div>
+
+</body>
+</html>

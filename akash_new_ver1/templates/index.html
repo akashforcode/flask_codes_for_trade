@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update XX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Function to handle form submission
+            $('form').submit(function(event) {
+                // Prevent default form submission
+                event.preventDefault();
+                // Get the new value for XX
+                var newValue = $('#strikevalue').val();
+                // Send a POST request to the Flask endpoint
+                $.post('/process_strikevalue', { strikevalue: newValue }, function(response) {
+                    // Update the result section with the response
+                    $('#result').html(response);
+                    // Update the current value of XX
+                    $('#xx').text(newValue);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Update XX</h1>
+    
+    <form>
+        <label for="strikevalue">Enter new value for XX:</label>
+        <!--  <label for="xx">Enter new value for XX:</label>   --->
+
+        <input type="text" id="strikevalue" name="strikevalue">
+        <button type="submit">Update</button>
+    </form>
+
+    <h2>Current Value of XX:</h2>
+    <p id="xx">{{ xx }}</p>
+
+    <div id="result"></div>
+</body>
+</html>

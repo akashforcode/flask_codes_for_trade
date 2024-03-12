@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Example</title>
+</head>
+<body>
+    <h1>Title</h1>
+    <textarea rows="5" cols="30"></textarea>
+    
+    <h2>Dynamic Display</h2>
+    <div id="dynamic-display"></div>
+    
+    <select id="combo-box1">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+    </select>
+    
+    <select id="combo-box2">
+        <option value="Option A">Option A</option>
+        <option value="Option B">Option B</option>
+        <option value="Option C">Option C</option>
+    </select>
+    
+    <div id="buttons">
+        <button>Button 1</button>
+        <button>Button 2</button>
+        <button>Button 3</button>
+        <button>Button 4</button>
+        <button>Button 5</button>
+        <button>Button 6</button>
+        <button>Button 7</button>
+        <button>Button 8</button>
+        <button>Button 9</button>
+        <button>Button 10</button>
+        <button>Button 11</button>
+        <button>Button 12</button>
+        <button>Button 13</button>
+        <button>Button 14</button>
+        <button>Button 15</button>
+        <button>Button 16</button>
+        <button>Button 17</button>
+        <button>Button 18</button>
+        <button>Button 19</button>
+        <button>Button 20</button>
+    </div>
+    
+    <div id="datetime"></div>
+
+    <script>
+        // Function to update date and time
+        function updateDateTime() {
+            var datetimeDiv = document.getElementById('datetime');
+            datetimeDiv.innerText = new Date().toLocaleString();
+        }
+        
+        // Call updateDateTime every second
+        setInterval(updateDateTime, 1000);
+        
+        // Initial call to updateDateTime
+        updateDateTime();
+    </script>
+</body>
+</html>

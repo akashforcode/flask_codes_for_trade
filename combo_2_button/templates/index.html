@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Combobox and Buttons Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Select an Option</h1>
+    <select id="optionSelect">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+    </select>
+    <button class="actionButton" id="button1">Button 1</button>
+    <button class="actionButton" id="button2">Button 2</button>
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function(){
+            $('.actionButton').click(function(){
+                var selectedOption = $('#optionSelect').val();
+                var action = $(this).text();
+                $.ajax({
+                    type: 'POST',
+                    url: '/process_data',
+                    data: { selected_option: selectedOption, action: action },
+                    success: function(response) {
+                        $('#result').text(response.result);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Form</title>
+</head>
+<body>
+    <h1>Enter a Variable</h1>
+    <form id="variableForm">
+        <label for="variable">Variable:</label>
+        <input type="text" id="variable" name="variable">
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('variableForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const variable = formData.get('variable');
+            fetch('/process_variable', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                document.getElementById('result').innerHTML = result;
+            });
+        });
+    </script>
+</body>
+</html>

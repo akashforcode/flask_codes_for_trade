@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Execute Functions</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#executeButton1").click(function(){
+                $.ajax({
+                    type: 'POST',
+                    url: '/execute_function1',
+                    success: function(response) {
+                        $("#result1").text(response.result);
+                    }
+                });
+            });
+
+            $("#executeButton2").click(function(){
+                $.ajax({
+                    type: 'POST',
+                    url: '/execute_function2',
+                    success: function(response) {
+                        $("#result2").text(response.result);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Click the buttons to execute the functions:</h1>
+    <button id="executeButton1">Execute Function 1</button>
+    <div id="result1"></div>
+    <button id="executeButton2">Execute Function 2</button>
+    <div id="result2"></div>
+</body>
+</html>
